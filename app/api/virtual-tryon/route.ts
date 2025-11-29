@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     const requestPayload = {
       model: model,
-      prompt: `A person wearing ${outfit}, fashion photography, high quality, realistic`,
+      prompt: `将图片中人物的衣服替换为${outfit}`,
       aspectRatio: 'auto',
       imageSize: '1K',
       urls: [`data:image/png;base64,${base64Image}`],

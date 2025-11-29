@@ -39,7 +39,7 @@ export default function VirtualTryOn() {
 
     setError('');
     setProgress(0);
-    setProgressStatus('备案中...');
+    setProgressStatus('');
     setIsContentViolation(false);
     setLoading(true);
     
@@ -48,7 +48,7 @@ export default function VirtualTryOn() {
       setProgress(prev => {
         if (prev < 90) {
           const increment = Math.random() * (15 - 5) + 5; // 5-15% 递增
-          return Math.min(prev + increment, 90);
+          return Math.min(Math.floor(prev + increment), 90); // 去掉小数
         }
         return prev;
       });
@@ -136,12 +136,10 @@ export default function VirtualTryOn() {
           </div>
           {userImagePreview && (
             <div className="mt-4">
-              <Image
+              <img
                 src={userImagePreview}
                 alt="Preview"
                 className="max-w-xs rounded-lg shadow-md"
-                width={300}
-                height={400}
               />
             </div>
           )}
@@ -172,7 +170,7 @@ export default function VirtualTryOn() {
           <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
             <div className="flex items-center justify-between mb-2">
               <p className="text-blue-700 dark:text-blue-400 font-medium">⏳ 生成进度</p>
-              <span className="text-blue-600 dark:text-blue-300 text-sm font-semibold">{progress}%</span>
+              <span className="text-blue-600 dark:text-blue-300 text-sm font-semibold">{Math.floor(progress)}%</span>
             </div>
             <div className="w-full h-2 bg-blue-200 dark:bg-blue-700 rounded-full overflow-hidden">
               <div 
@@ -233,12 +231,10 @@ export default function VirtualTryOn() {
             <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">
               ✨ 试穿效果图：
             </h3>
-            <Image
+            <img
               src={generatedImage}
               alt="Try-on Result"
               className="w-full rounded-lg shadow-lg"
-              width={800}
-              height={1000}
             />
           </div>
         )}

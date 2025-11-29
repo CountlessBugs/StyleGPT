@@ -167,6 +167,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(errorResponse, { status: 500 });
     }
 
+    // 验证并清理 URL
+    try {
+      // 确保 URL 是有效的
+      new URL(imageUrl);
+    } catch (e) {
+      console.error('Invalid URL format:', imageUrl, e);
+      return NextResponse.json(
+        {
+          error: '生成的图像 URL 格式无效',
+          details: '无法处理 API 返回的图像地址',
+        },
+        { status: 500 }
+      );
+    }
+
     console.log('Final imageUrl to return:', imageUrl);
     return NextResponse.json({ imageUrl, progressUpdates });
   } catch (error) {

@@ -196,7 +196,7 @@ export default function OutfitGenerator() {
           </label>
           {wardrobeList.length === 0 ? (
             <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-center text-gray-500 dark:text-gray-400">
-              💡 从"我的衣柜"导入衣物
+              💡 从&quot;我的衣柜&quot;导入衣物
             </div>
           ) : (
             <div className="space-y-3">

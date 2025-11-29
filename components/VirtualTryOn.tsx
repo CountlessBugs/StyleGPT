@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface ProgressUpdate {
   progress?: number;
@@ -135,10 +136,12 @@ export default function VirtualTryOn() {
           </div>
           {userImagePreview && (
             <div className="mt-4">
-              <img
+              <Image
                 src={userImagePreview}
                 alt="Preview"
                 className="max-w-xs rounded-lg shadow-md"
+                width={300}
+                height={400}
               />
             </div>
           )}
@@ -230,10 +233,12 @@ export default function VirtualTryOn() {
             <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">
               ✨ 试穿效果图：
             </h3>
-            <img
+            <Image
               src={generatedImage}
               alt="Try-on Result"
               className="w-full rounded-lg shadow-lg"
+              width={800}
+              height={1000}
             />
           </div>
         )}
